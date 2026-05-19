@@ -14,40 +14,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: {
-    default: "Amplus AI",
-    template: "%s | Amplus AI",
-  },
-  description: "AI가 추천하는 스마트 여행 플랫폼. 항공권·호텔·투어·여행 콘텐츠를 AI로 탐색하세요.",
-  keywords: ["AI 여행", "여행 추천", "항공권", "호텔 추천", "투어", "스마트 여행", "Amplus AI"],
-  authors: [{ name: "Amplus AI" }],
-  creator: "Amplus AI",
-  metadataBase: new URL("https://amplus-ai.com"),
+  title: "Amplus AI",
+  description: "AI 기반 스마트 여행 플랫폼",
+
   openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "https://amplus-ai.com",
+    title: "Amplus AI",
+    description: "AI 기반 스마트 여행 플랫폼",
+    url: "https://amplusai.com",
     siteName: "Amplus AI",
-    title: "Amplus AI — AI 스마트 여행 플랫폼",
-    description: "AI가 추천하는 스마트 여행 플랫폼. 항공권·호텔·투어·여행 콘텐츠를 AI로 탐색하세요.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Amplus AI — AI 스마트 여행 플랫폼",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Amplus AI — AI 스마트 여행 플랫폼",
-    description: "AI가 추천하는 스마트 여행 플랫폼. 항공권·호텔·투어·여행 콘텐츠를 AI로 탐색하세요.",
-    images: ["/og-image.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
+    locale: "ko_KR",
+    type: "website",
   },
 };
 
