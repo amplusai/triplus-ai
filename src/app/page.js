@@ -1,65 +1,92 @@
-import Image from "next/image";
+import AffiliateBanner from "@/components/AffiliateBanner";
+import RecommendBox from "@/components/RecommendBox";
+import PostCard from "@/components/PostCard";
 
-export default function Home() {
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen bg-slate-950 text-white">
+      
+      {/* Hero Section */}
+      <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute left-[-100px] top-[-100px] h-[400px] w-[400px] rounded-full bg-blue-500/30 blur-3xl" />
+          <div className="absolute bottom-[-150px] right-[-150px] h-[400px] w-[400px] rounded-full bg-cyan-500/20 blur-3xl" />
+        </div>
+        
+        <p className="mb-4 text-sm tracking-[0.3em] text-blue-400 uppercase">
+          AI-Powered Travel Platform
+        </p>
+
+        <h1 className="mb-6 bg-gradient-to-r from-white to-blue-300 bg-clip-text text-5xl font-bold text-transparent md:text-7xl">
+          ✈️ Amplus AI
+        </h1>
+
+        <p className="mb-10 max-w-2xl text-lg text-slate-300 md:text-xl">
+          AI가 추천하는 스마트 여행 플랫폼
+          <br />
+          항공권 · 호텔 · 투어 · 여행 콘텐츠를 AI로 탐색하세요
+        </p>
+
+        <div className="mb-8 flex w-full max-w-xl items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-2 backdrop-blur shadow-2xl shadow-blue-500/10">
+          <span className="pl-3 text-slate-400">🔍</span>
+          <input
+            type="text"
+            placeholder="예: 도쿄 자유여행 3박4일 맛집 중심"
+            className="flex-1 bg-transparent px-2 py-3 text-sm text-white placeholder:text-slate-500 outline-none"
+          />
+          <button className="rounded-xl bg-blue-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-400 hover:shadow-lg hover:shadow-blue-500/30">
+            추천
+          </button>
+        </div>
+
+        <div className="flex gap-4">
+          <button className="rounded-xl bg-blue-500 px-6 py-3 font-semibold transition hover:bg-blue-400">
+            AI 여행 추천 시작
+          </button>
+
+          <button className="rounded-xl border border-slate-700 px-6 py-3 font-semibold transition hover:border-blue-400">
+            여행 콘텐츠 보기
+          </button>
+        </div>
+      </section>
+
+      <AffiliateBanner />
+
+      <RecommendBox />
+
+      <section className="px-6 py-16 text-white">
+        <div className="mx-auto max-w-6xl">
+          <p className="mb-3 text-sm tracking-[0.3em] text-blue-400">
+            TRAVEL CONTENTS
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+          <h2 className="mb-10 text-3xl font-bold">추천 여행 콘텐츠</h2>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            <PostCard
+              category="JAPAN"
+              title="도쿄 자유여행 가이드"
+              description="맛집, 쇼핑, 감성 카페 중심의 도쿄 여행 추천 콘텐츠입니다."
+              image="/images/tokyo.jpg"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+            <PostCard
+              category="KOREA"
+              title="제주 감성 여행"
+              description="오션뷰 숙소와 드라이브 코스를 중심으로 제주 여행을 추천합니다."
+              image="/images/jeju.jpg"
+            />
+
+            <PostCard
+              category="THAILAND"
+              title="방콕 가성비 여행"
+              description="야시장, 호텔, 투어를 중심으로 방콕 여행 코스를 소개합니다."
+              image="/images/bangkok.jpg"
+            />
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
