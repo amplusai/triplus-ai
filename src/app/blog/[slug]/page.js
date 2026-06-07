@@ -3,6 +3,42 @@ import TableOfContents from "@/components/TableOfContents";
 import PostCard from "@/components/PostCard";
 import ShareButtons from "@/components/ShareButtons";
 
+function removeTocBlock(html) {
+  const markers = ["ez-toc-container", "toc_container", "wp-block-table-of-contents", "rank-math-toc"];
+  let result = html;
+
+  for (const marker of markers) {
+    const idx = result.indexOf(marker);
+    if (idx === -1) continue;
+
+    const divStart = result.lastIndexOf("<div", idx);
+    if (divStart === -1) continue;
+
+    let depth = 0;
+    let i = divStart;
+    while (i < result.length) {
+      if (result.slice(i, i + 4) === "<div") {
+        depth++;
+        i += 4;
+      } else if (result.slice(i, i + 6) === "</div>") {
+        depth--;
+        if (depth === 0) {
+          result = result.slice(0, divStart) + result.slice(i + 6);
+          break;
+        }
+        i += 6;
+      } else {
+        i++;
+      }
+    }
+  }
+
+  // nav 기반 TOC (wp-block-table-of-contents)
+  result = result.replace(/<nav[^>]*class="[^"]*wp-block-table-of-contents[^"]*"[^>]*>[\s\S]*?<\/nav>/gi, "");
+
+  return result;
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
@@ -33,7 +69,9 @@ export default async function BlogDetailPage({ params }) {
     );
   }
 
-  const plainText = post.content.rendered.replace(/<[^>]+>/g, "");
+  const cleanContent = removeTocBlock(post.content.rendered);
+
+  const plainText = cleanContent.replace(/<[^>]+>/g, "");
   const readingTime = Math.ceil(plainText.split(" ").length / 200);
 
   const categoryId = post.categories?.[0];
@@ -80,7 +118,7 @@ export default async function BlogDetailPage({ params }) {
                      prose-img:rounded-3xl
                      prose-img:border
                      prose-img:border-white/10"
-          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+          dangerouslySetInnerHTML={{ __html: cleanContent }}
         />
 
         {/* 공유 버튼 */}
