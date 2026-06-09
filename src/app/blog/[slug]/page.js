@@ -69,7 +69,12 @@ export default async function BlogDetailPage({ params }) {
     );
   }
 
-  const cleanContent = removeTocBlock(post.content.rendered);
+  const cleanContent = removeTocBlock(post.content.rendered)
+    // lazy-load 플러그인이 data-src에 숨긴 실제 URL을 src로 복원
+    .replace(/\sdata-lazy-src="([^"]+)"/gi, ' src="$1"')
+    .replace(/\sdata-src="([^"]+)"/gi, ' src="$1"')
+    // 복원 후 남은 base64 플레이스홀더 src 제거
+    .replace(/\ssrc="data:image[^"]*"/gi, '');
 
   const plainText = cleanContent.replace(/<[^>]+>/g, "");
   const readingTime = Math.ceil(plainText.split(" ").length / 200);
