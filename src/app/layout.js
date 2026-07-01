@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 
+
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -17,6 +19,10 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Amplus AI",
   description: "AI 기반 스마트 여행 플랫폼",
+
+  verification: {
+    google: "Co1x-SZH_ysJV5O2TWFvyA-rZ4xdZG0PWWalQdgwF50",
+  },
 
   openGraph: {
     title: "Amplus AI",
