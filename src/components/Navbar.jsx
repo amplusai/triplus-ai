@@ -11,13 +11,13 @@ const navItems = [
     label: "Travel",
     sub: [
       { href: "/travel", label: "전체 여행지" },
-      { href: "/blog?cat=해외여행", label: "해외여행" },
-      { href: "/blog?cat=국내여행", label: "국내여행" },
-      { href: "/blog?cat=여행일정", label: "여행일정" },
-      { href: "/blog?cat=항공권", label: "항공권" },
-      { href: "/blog?cat=호텔", label: "호텔" },
-      { href: "/blog?cat=맛집", label: "맛집" },
-      { href: "/blog?cat=여행꿀팁", label: "여행꿀팁" },
+      { href: "/travel?cat=해외여행", label: "해외여행" },
+      { href: "/travel?cat=국내여행", label: "국내여행" },
+      { href: "/travel?cat=여행일정", label: "여행일정" },
+      { href: "/travel?cat=항공권", label: "항공권" },
+      { href: "/travel?cat=호텔", label: "호텔" },
+      { href: "/travel?cat=맛집", label: "맛집" },
+      { href: "/travel?cat=여행꿀팁", label: "여행꿀팁" },
     ],
   },
   {
@@ -65,7 +65,6 @@ const navItems = [
       { href: "/insights?cat=인터뷰", label: "인터뷰" },
     ],
   },
-  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
 ];
 

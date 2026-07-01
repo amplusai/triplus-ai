@@ -1,11 +1,22 @@
 import TravelCard from "@/components/TravelCard";
+import PostCard from "@/components/PostCard";
+import { getPosts } from "@/lib/wordpress";
 
 export const metadata = {
   title: "Travel | Amplus AI",
   description: "AI가 추천하는 여행지, 항공권, 호텔, 투어 정보를 확인하세요.",
 };
 
-export default function TravelPage() {
+function stripHtml(html = "") {
+  return html.replace(/<[^>]+>/g, "");
+}
+function getFeaturedImage(post) {
+  return post?._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
+}
+
+export default async function TravelPage() {
+  const posts = await getPosts();
+
   return (
     <main className="min-h-screen bg-slate-950 px-6 pt-32 text-white">
       <section className="mx-auto max-w-7xl">
@@ -15,11 +26,11 @@ export default function TravelPage() {
 
         <h1 className="mb-6 text-5xl font-bold">AI 여행 추천</h1>
 
-        <p className="max-w-2xl text-lg leading-8 text-slate-300">
+        <p className="mb-16 max-w-2xl text-lg leading-8 text-slate-300">
           도시별 여행 정보, 일정 추천, 항공권·호텔·투어 콘텐츠를 제공합니다.
         </p>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <TravelCard
             country="JAPAN"
             title="도쿄 여행"
@@ -111,6 +122,26 @@ export default function TravelPage() {
             slug="cebu"
           />
         </div>
+
+        {/* 여행 블로그 글 */}
+        {posts.length > 0 && (
+          <div className="mt-24">
+            <p className="mb-3 text-sm tracking-[0.3em] text-blue-400">TRAVEL BLOG</p>
+            <h2 className="mb-12 text-3xl font-bold">여행 블로그</h2>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {posts.map((post) => (
+                <PostCard
+                  key={post.id}
+                  category="Travel"
+                  title={stripHtml(post.title?.rendered || "")}
+                  description={stripHtml(post.excerpt?.rendered || "").slice(0, 120)}
+                  slug={post.slug}
+                  image={getFeaturedImage(post)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </section>
     </main>
   );

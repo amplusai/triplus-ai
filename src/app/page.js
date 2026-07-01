@@ -168,10 +168,10 @@ export default async function HomePage() {
             <div className="mb-10 flex items-end justify-between">
               <h2 className="text-3xl font-bold">최신 콘텐츠</h2>
               <Link
-                href="/blog"
+                href="/travel"
                 className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-semibold text-slate-300 transition hover:border-blue-400 hover:text-blue-400"
               >
-                블로그 전체 보기 →
+                콘텐츠 전체 보기 →
               </Link>
             </div>
 
