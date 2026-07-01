@@ -65,6 +65,7 @@ const navItems = [
       { href: "/insights?cat=인터뷰", label: "인터뷰" },
     ],
   },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
 ];
 

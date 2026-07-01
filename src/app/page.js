@@ -167,8 +167,11 @@ export default async function HomePage() {
             <p className="mb-3 text-sm tracking-[0.3em] text-blue-400">LATEST CONTENT</p>
             <div className="mb-10 flex items-end justify-between">
               <h2 className="text-3xl font-bold">최신 콘텐츠</h2>
-              <Link href="/blog" className="text-sm text-slate-400 transition hover:text-blue-400">
-                전체 보기 →
+              <Link
+                href="/blog"
+                className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-semibold text-slate-300 transition hover:border-blue-400 hover:text-blue-400"
+              >
+                블로그 전체 보기 →
               </Link>
             </div>
 
