@@ -14,8 +14,8 @@ const navItems = [
       { href: "/travel?cat=해외여행", label: "해외여행" },
       { href: "/travel?cat=국내여행", label: "국내여행" },
       { href: "/travel?cat=여행일정", label: "여행일정" },
-      { href: "/travel?cat=항공권", label: "항공권" },
-      { href: "/travel?cat=호텔", label: "호텔" },
+      { href: "https://www.trip.com/t/ZRluRkHXOV2", label: "항공권", external: true },
+      { href: "https://www.trip.com/t/ZRluRkHXOV2", label: "호텔", external: true },
       { href: "/travel?cat=맛집", label: "맛집" },
       { href: "/travel?cat=여행꿀팁", label: "여행꿀팁" },
     ],
@@ -114,15 +114,27 @@ export default function Navbar() {
               {item.sub && openDropdown === item.href && (
                 <div className="absolute left-0 top-full pt-1">
                   <div className="min-w-[160px] rounded-2xl border border-white/10 bg-slate-900/95 py-2 shadow-xl backdrop-blur">
-                    {item.sub.map((s) => (
-                      <Link
-                        key={s.href}
-                        href={s.href}
-                        className="block px-4 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-blue-400"
-                      >
-                        {s.label}
-                      </Link>
-                    ))}
+                    {item.sub.map((s) =>
+                      s.external ? (
+                        <a
+                          key={s.href + s.label}
+                          href={s.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block px-4 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-blue-400"
+                        >
+                          {s.label}
+                        </a>
+                      ) : (
+                        <Link
+                          key={s.href}
+                          href={s.href}
+                          className="block px-4 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-blue-400"
+                        >
+                          {s.label}
+                        </Link>
+                      )
+                    )}
                   </div>
                 </div>
               )}
@@ -156,16 +168,29 @@ export default function Navbar() {
               </Link>
               {item.sub && (
                 <div className="mt-2 flex flex-wrap gap-2">
-                  {item.sub.slice(1).map((s) => (
-                    <Link
-                      key={s.href}
-                      href={s.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-400 hover:text-blue-400"
-                    >
-                      {s.label}
-                    </Link>
-                  ))}
+                  {item.sub.slice(1).map((s) =>
+                    s.external ? (
+                      <a
+                        key={s.href + s.label}
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setMobileOpen(false)}
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-400 hover:text-blue-400"
+                      >
+                        {s.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={s.href}
+                        href={s.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-400 hover:text-blue-400"
+                      >
+                        {s.label}
+                      </Link>
+                    )
+                  )}
                 </div>
               )}
             </div>
