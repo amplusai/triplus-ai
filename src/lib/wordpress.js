@@ -2,9 +2,9 @@ const API_URL = "https://cms.amplusai.com/wp-json/wp/v2";
 
 export async function getPosts() {
   const res = await fetch(
-    `${API_URL}/posts?_embed&per_page=100`,
+    `${API_URL}/posts?_embed=wp:featuredmedia&per_page=100`,
     {
-      cache: "no-store",
+      next: { revalidate: 3600 },
     }
   );
 
