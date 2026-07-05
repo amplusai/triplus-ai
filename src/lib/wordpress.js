@@ -4,7 +4,7 @@ export async function getPosts() {
   const res = await fetch(
     `${API_URL}/posts?_embed&per_page=100`,
     {
-      next: { revalidate: 60 },
+      cache: "no-store",
     }
   );
 
