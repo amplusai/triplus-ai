@@ -4,7 +4,7 @@ export async function getPosts() {
   const res = await fetch(
     `${API_URL}/posts?_embed=wp:featuredmedia&per_page=100`,
     {
-      next: { revalidate: 3600 },
+      next: { revalidate: 300 },
     }
   );
 
