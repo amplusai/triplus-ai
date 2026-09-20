@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://amplusai.com"),
   title: "AI Insight Korea",
   description: "경험에서 나온 인사이트, 기술로 만드는 미래 — 산업 인사이트·글로벌 비즈니스·AI 기술·여행 플랫폼",
 
@@ -31,7 +32,7 @@ export const metadata = {
     siteName: "AI Insight Korea",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image-v2.jpg",
         width: 1200,
         height: 630,
       },
